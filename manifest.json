@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Digihelper",
+    "version": "1.0",
+    "description": "A digital helper",
+    "permissions": ["activeTab"],
+    "background": {
+        "service_worker": "src/background/background.js"
+    },
+    "action": {
+        "default_popup": "src/index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "css": ["src/content/styles.css"],
+            "js": ["src/content/app.js"]
+        }
+    ]
+}
