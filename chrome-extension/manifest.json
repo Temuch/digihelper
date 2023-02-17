@@ -10,8 +10,8 @@
     "content_scripts": [
         {
             "matches": ["https://grants.myrosmol.ru"],
-            "css": ["src/content/styles.css"],
-            "js": ["src/content/index.js"]
+            "css": ["src/content/content.css"],
+            "js": ["src/content/content.js"]
         }
     ]
 }
