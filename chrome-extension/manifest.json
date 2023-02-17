@@ -11,7 +11,7 @@
         {
             "matches": ["https://grants.myrosmol.ru"],
             "css": ["src/content/styles.css"],
-            "js": ["src/lib/react.development.js", "src/lib/react-dom.development.js", "src/content/Form.js", "src/content/App.js"]
+            "js": ["src/content/index.js"]
         }
     ]
 }
