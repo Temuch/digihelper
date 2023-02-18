@@ -5,6 +5,23 @@ import styles from '../styles/BotInputPanel.module.css'
 
 function BotInputPanel(props) {
     const [text, updateText] = useState('')
+    const [isRecording, setRecording] = useState(false)
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    const recognizer = new SpeechRecognition()
+    recognizer.interimResults = true
+    recognizer.lang = 'ru-Ru'
+
+    recognizer.onresult = function (event) {
+        const result = event.results[event.resultIndex]
+        if (result.isFinal) {
+            const res = result[0].transcript
+            console.log(res)
+            setRecording(false)
+            recognizer.stop()
+            props.onSend(res)
+        }
+    }
 
     const onSend = (e) => {
         if (e) e.preventDefault()
@@ -17,10 +34,25 @@ function BotInputPanel(props) {
         if (e.keyCode == 13) onSend()
     }
 
+    const microClicked = () => {
+        setRecording((recording) => {
+            if (!recording) {
+                recognizer.start()
+            } else {
+                recognizer.stop()
+            }
+            return !recording
+        })
+    }
+
     return (
         <div className={styles['modal__forms']}>
             <form action='#' className={styles['form']}>
-                <button className={styles['btn__micro']} title='Задать вопрос голосом'>
+                <button
+                    onClick={microClicked}
+                    className={styles['btn__micro']}
+                    title='Задать вопрос голосом'
+                >
                     <svg
                         style={{ width: '30px', height: '34px' }}
                         className={styles['modal__forms-micro']}
@@ -32,7 +64,7 @@ function BotInputPanel(props) {
                 </button>
                 <input
                     className={styles['modal__forms-text']}
-                    value={text}
+                    value={isRecording ? 'Идёт запись...' : text}
                     type='text'
                     placeholder='Введите ваш вопрос...'
                     title='Введите сюда Ваш вопрос'
