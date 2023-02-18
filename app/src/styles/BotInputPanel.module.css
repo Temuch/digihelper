@@ -22,7 +22,7 @@
 }
 
 .modal__forms-text {
-    width: 201px;
+    width: 200px;
     background: transparent;
     border-radius: 4px;
     padding: 9px 12px;
@@ -42,6 +42,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.2s;
+    border: 2px solid #8c64d8;
 }
 
 .btn__micro:hover {
@@ -56,5 +57,6 @@
 }
 
 .modal__forms-micro {
-    padding: 5px 6px 0;
+    padding: 4px 5px 0;
+    box-sizing: content-box;
 }

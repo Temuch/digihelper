@@ -13,6 +13,7 @@ function BotInputPanel(props) {
     recognizer.lang = 'ru-Ru'
 
     recognizer.onresult = function (event) {
+        console.log(event)
         const result = event.results[event.resultIndex]
         if (result.isFinal) {
             const res = result[0].transcript
@@ -34,7 +35,8 @@ function BotInputPanel(props) {
         if (e.keyCode == 13) onSend()
     }
 
-    const microClicked = () => {
+    const microClicked = (e) => {
+        e.preventDefault()
         setRecording((recording) => {
             if (!recording) {
                 recognizer.start()
@@ -52,13 +54,9 @@ function BotInputPanel(props) {
                     onClick={microClicked}
                     className={styles['btn__micro']}
                     title='Задать вопрос голосом'
+                    style={isRecording ? { border: '2px solid red' } : {}}
                 >
-                    <svg
-                        style={{ width: '30px', height: '34px' }}
-                        className={styles['modal__forms-micro']}
-                        width='18'
-                        height='29'
-                    >
+                    <svg className={styles['modal__forms-micro']} width='18' height='29'>
                         <use href='#micro'></use>
                     </svg>
                 </button>
