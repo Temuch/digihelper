@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Pt-root-ui";
+    src: url("../fonts/PT-Root-UI_Regular.woff2");
+} 
+
+@font-face {
+    font-family: 'Pt-root-ui';
+    src: url("../fonts/pt-root-ui_medium.woff2");
+}

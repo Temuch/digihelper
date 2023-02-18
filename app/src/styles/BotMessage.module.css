@@ -1,0 +1,39 @@
+.message-user {
+    margin-right: 10px;
+    align-self: flex-end;
+    background: #faa419;
+}
+
+.message-bot {
+    background: #8c64d8;
+    align-self: flex-start;
+}
+
+.message {
+    border-radius: 4px;
+    padding: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.user-name {
+    align-self: flex-end;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #ffffff;
+}
+
+.m_text {
+    max-width: 220px;
+    height: auto;
+    font-size: 15px;
+    line-height: 16px;
+    color: #f3f3f3;
+    letter-spacing: 0.5px;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
