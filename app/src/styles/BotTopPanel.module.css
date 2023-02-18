@@ -1,0 +1,24 @@
+.top-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 5px 10px;
+}
+
+.btn-close {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    font-size: 18px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    color: rgb(140, 100, 216);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-close span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

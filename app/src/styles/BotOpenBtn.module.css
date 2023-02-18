@@ -1,0 +1,23 @@
+.bot-open-btn {
+    border: 5px solid rgb(140, 100, 216);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 34px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background-color: rgb(204, 255, 0);
+    cursor: pointer;
+}
+
+.bot-open-btn:hover {
+    background-color: rgb(222 255 92);
+}
+
+.bot-open-btn span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

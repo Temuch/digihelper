@@ -1,6 +1,6 @@
 .modal {
     min-width: 400px;
-    height: 480px;
+    min-height: 480px;
     background-color: #f8f9fa;
     position: fixed;
     right: 20px;

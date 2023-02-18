@@ -7,6 +7,8 @@ function BotInputPanel(props) {
     const [text, updateText] = useState('')
     const [isRecording, setRecording] = useState(false)
 
+    console.log('input component')
+
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
     const recognizer = new SpeechRecognition()
     recognizer.interimResults = true
@@ -32,7 +34,9 @@ function BotInputPanel(props) {
     }
 
     const inputKeyDown = (e) => {
-        if (e.keyCode == 13) onSend()
+        if (e.keyCode == 13) {
+            onSend(e)
+        }
     }
 
     const microClicked = (e) => {
@@ -41,7 +45,7 @@ function BotInputPanel(props) {
             if (!recording) {
                 recognizer.start()
             } else {
-                recognizer.stop()
+                // recognizer.stop()
             }
             return !recording
         })

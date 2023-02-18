@@ -3,6 +3,8 @@ import BotContent from './BotContent.js'
 import BotInputPanel from './BotInputPanel.js'
 
 import styles from '../styles/BotForm.module.css'
+import BotOpenBtn from './BotOpenBtn.js'
+import BotTopPanel from './BotTopPanel.js'
 
 // function sendRequst(text) {
 // return fetch(url, {
@@ -31,6 +33,10 @@ import styles from '../styles/BotForm.module.css'
 
 function BotForm() {
     const [messages, updateMessages] = useState([])
+    const [isOpened, setIsOpened] = useState(false)
+
+    const btnOpenClick = () => setIsOpened(true)
+    const btnCloseClick = () => setIsOpened(false)
 
     const addNewMessage = (message) => {
         updateMessages((messages) => {
@@ -91,10 +97,16 @@ function BotForm() {
                     <rect x='7' y='21' width='4' height='8' rx='1' fill='white' />
                 </symbol>
             </svg>
-            <div className={styles['modal']}>
-                <BotContent messages={messages}></BotContent>
-                <BotInputPanel onSend={onMessageSend}></BotInputPanel>
-            </div>
+
+            {isOpened ? (
+                <div className={styles['modal']}>
+                    <BotTopPanel onClose={btnCloseClick}></BotTopPanel>
+                    <BotContent messages={messages}></BotContent>
+                    <BotInputPanel onSend={onMessageSend}></BotInputPanel>
+                </div>
+            ) : (
+                <BotOpenBtn onClick={btnOpenClick}></BotOpenBtn>
+            )}
         </>
     )
 }
