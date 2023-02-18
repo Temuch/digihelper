@@ -6,7 +6,8 @@ import styles from '../styles/BotInputPanel.module.css'
 function BotInputPanel(props) {
     const [text, updateText] = useState('')
 
-    const onSend = () => {
+    const onSend = (e) => {
+        if (e) e.preventDefault()
         if (text == '') return
         props.onSend(text)
         updateText('')
