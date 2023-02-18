@@ -3,17 +3,16 @@ import { useState } from 'react'
 
 import styles from '../styles/BotInputPanel.module.css'
 
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const recognizer = new SpeechRecognition()
+recognizer.interimResults = true
+recognizer.lang = 'ru-Ru'
+
 function BotInputPanel(props) {
     const [text, updateText] = useState('')
     const [isRecording, setRecording] = useState(false)
 
     console.log('input component')
-
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    const recognizer = new SpeechRecognition()
-    recognizer.interimResults = true
-    recognizer.lang = 'ru-Ru'
-
     recognizer.onresult = function (event) {
         console.log(event)
         const result = event.results[event.resultIndex]
@@ -42,10 +41,14 @@ function BotInputPanel(props) {
     const microClicked = (e) => {
         e.preventDefault()
         setRecording((recording) => {
-            if (!recording) {
-                recognizer.start()
-            } else {
-                // recognizer.stop()
+            try {
+                if (!recording) {
+                    recognizer.start()
+                } else {
+                    recognizer.stop()
+                }
+            } catch (err) {
+                console.log('Err:', err)
             }
             return !recording
         })
