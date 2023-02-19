@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 
 import styles from '../styles/BotInputPanel.module.css'
@@ -25,6 +25,18 @@ function BotInputPanel(props) {
         }
     }
 
+    useEffect(() => {
+        try {
+            if (isRecording) {
+                recognizer.start()
+            } else {
+                recognizer.stop()
+            }
+        } catch (err) {
+            console.log('Error with recognizer:', err)
+        }
+    }, [isRecording])
+
     const onSend = (e) => {
         if (e) e.preventDefault()
         if (text == '') return
@@ -40,18 +52,7 @@ function BotInputPanel(props) {
 
     const microClicked = (e) => {
         e.preventDefault()
-        setRecording((recording) => {
-            try {
-                if (!recording) {
-                    recognizer.start()
-                } else {
-                    recognizer.stop()
-                }
-            } catch (err) {
-                console.log('Err:', err)
-            }
-            return !recording
-        })
+        setRecording(!isRecording)
     }
 
     return (
